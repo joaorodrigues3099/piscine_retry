@@ -1,53 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 19:51:39 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/06 07:57:10 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/06 08:14:19 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/06 12:21:15 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_write(char a, char b, char c)
+void	ft_putchar(char c)
 {
-	write(1, &a, 1);
-	write(1, &b, 1);
 	write(1, &c, 1);
-	if (a != '7' || b != '8' || c != '9')
-		write(1, ", ", 2);
 }
 
-void	ft_print_comb(void)
+void	ft_putnbr(int nb)
 {
-	char	a;
-	char	b;
-	char	c;
-
-	a = '0';
-	while (a <= '7')
+	if (nb == -2147483648)
 	{
-		b = a + 1;
-		while (b <= '8')
-		{
-			c = b + 1;
-			while (c <= '9')
-			{
-				ft_write(a, b, c);
-				c++;
-			}
-			b++;
-		}
-		a++;
+		ft_putnbr(nb / 10);
+		ft_putchar('8');
 	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
+	else if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar('0' + nb);
 }
 /*
-int	main(void)
+#include <stdlib.h>
+
+int	main(int ac, char **av)
 {
-	ft_print_comb();
+	if (ac == 2)
+	{
+		ft_putnbr(atoi(av[1]));
+	}
 	write(1, "\n", 1);
 	return (0);
 }

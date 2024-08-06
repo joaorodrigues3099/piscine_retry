@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:31:21 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/05 19:35:14 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:49:44 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	ft_print_numbers(void)
 		c++;
 	}
 }
-
+/*
 int	main(void)
 {
 	ft_print_numbers();
 	write(1, "\n", 1);
 	return (0);
 }
+*/
