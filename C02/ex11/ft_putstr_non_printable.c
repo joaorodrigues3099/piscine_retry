@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 08:14:19 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/18 14:42:58 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/18 16:19:17 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/18 18:38:58 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,25 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putnbr(int nb)
+void	ft_putstr_non_printable(char *str)
 {
-	if (nb == -2147483648)
+	while (*str)
 	{
-		ft_putnbr(nb / 10);
-		ft_putchar('8');
+		if (*str >= 32 && *str <= 126)
+			ft_putchar(*str);
+		else
+		{
+			ft_putchar('\\');
+			ft_putchar("0123456789abcdef"[((unsigned char)*str) / 16]);
+			ft_putchar("0123456789abcdef"[((unsigned char)*str) % 16]);
+		}
+		str++;
 	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putchar('0' + (nb % 10));
-	}
-	else
-		ft_putchar('0' + nb);
 }
 /*
-#include <stdlib.h>
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		ft_putnbr(atoi(av[1]));
-	}
-	write(1, "\n", 1);
+int	main(void)
+{	
+	ft_putstr_non_printable("Hello/r World/t!");
 	return (0);
 }
 */

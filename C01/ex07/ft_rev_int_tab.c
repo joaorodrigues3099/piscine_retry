@@ -1,52 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 08:14:19 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/18 14:42:58 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/14 11:47:15 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/14 14:29:30 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+void	ft_rev_int_tab(int *tab, int size)
 {
-	write(1, &c, 1);
-}
+	int	i;
+	int	swap;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	i = 0;
+	swap = 0;
+	while (i < size / 2)
 	{
-		ft_putnbr(nb / 10);
-		ft_putchar('8');
+		swap = tab[i];
+		tab[i] = tab[size - 1 - i];
+		tab[size - 1 - i++] = swap;
 	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putchar('0' + (nb % 10));
-	}
-	else
-		ft_putchar('0' + nb);
 }
 /*
 #include <stdlib.h>
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	int	i;
+	int tab[ac - 1];
+	
+	i = 0;
+	if (ac > 1)
 	{
-		ft_putnbr(atoi(av[1]));
+		while (i < ac - 1)
+		{
+			tab[i] = atoi(av[i + 1]);
+			i++;
+		}
 	}
-	write(1, "\n", 1);
+	ft_rev_int_tab(tab, ac - 1);
+	i = 0;
+	while (i < ac - 1)
+	{
+		printf("rev_int_tab[%d]: %d\n", i, tab[i]);
+		i++;
+	}
 	return (0);
 }
 */

@@ -1,52 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 08:14:19 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/18 14:42:58 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/14 15:53:49 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/14 16:00:59 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+int	ft_str_is_alpha(char *str)
 {
-	write(1, &c, 1);
-}
+	int	res;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	res = 1;
+	while (*str)
 	{
-		ft_putnbr(nb / 10);
-		ft_putchar('8');
+		if (*str < 'A' || (*str > 'Z' && *str < 'a') || *str > 'z')
+			res = 0;
+		str++;
 	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putchar('0' + (nb % 10));
-	}
-	else
-		ft_putchar('0' + nb);
+	return (res);
 }
 /*
-#include <stdlib.h>
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		ft_putnbr(atoi(av[1]));
+		printf("str: %s\n", av[1]);
+		printf("str_is_alpha: %d\n", ft_str_is_alpha(av[1]));
 	}
-	write(1, "\n", 1);
 	return (0);
 }
 */
