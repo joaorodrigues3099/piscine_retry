@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 14:39:21 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 02:23:57 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/19 15:05:58 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/19 15:16:40 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
-
+	
 	i = 0;
+	while (dest[i])
+		i++;
 	while (*src)
 		dest[i++] = *src++;
 	dest[i] = '\0';
@@ -22,20 +24,19 @@ char	*ft_strcpy(char *dest, char *src)
 }
 /*
 #include <stdio.h>
-#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
-	char	*dest;
-
-	if (ac == 2)
+	if (ac == 3)
 	{
-		printf("src: %s\n", av[1]);
-		dest = (char *)malloc(sizeof(av[1]));
-		printf("dest_bfr: %s\n", dest);
-		printf("ft_strcpy: %s\n", ft_strcpy(dest, av[1]));
-		printf("dest_aft: %s\n", dest);
+		printf("dest: \"%s\"\n", av[1]);
+		printf("src: \"%s\"\n", av[2]);
+		printf("strcat: \"%s\"\n", ft_strcat(av[1], av[2]));
 	}
-	return (0);
+	else
+	{
+		printf("Invalid arguments\n");
+		printf("Format: ./[PROGRAM_NAME] [DEST] [SRC]\n");
+	}
 }
 */

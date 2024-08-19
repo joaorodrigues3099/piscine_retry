@@ -1,40 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 14:39:21 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 02:23:57 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/19 15:17:46 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/19 18:12:03 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strstr(char *src, char *to_find)
 {
 	int	i;
-
+	
 	i = 0;
+	if (!to_find[i])
+		return (src);
 	while (*src)
-		dest[i++] = *src++;
-	dest[i] = '\0';
-	return (dest);
+	{
+		i = 0;
+		while (src[i] && to_find[i] && src[i] == to_find[i])
+			i++;
+		if (!to_find[i])
+			return (src);
+		src++;
+	}
+	return (0);
 }
 /*
 #include <stdio.h>
-#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
-	char	*dest;
-
-	if (ac == 2)
+	if (ac == 3)
 	{
-		printf("src: %s\n", av[1]);
-		dest = (char *)malloc(sizeof(av[1]));
-		printf("dest_bfr: %s\n", dest);
-		printf("ft_strcpy: %s\n", ft_strcpy(dest, av[1]));
-		printf("dest_aft: %s\n", dest);
+		printf("src: \"%s\"\n", av[1]);
+		printf("to_find: \"%s\"\n", av[2]);
+		printf("strstr: \"%s\"\n", ft_strstr(av[1], av[2]));
+	}
+	else
+	{
+		printf("Invalid args\n");
+		printf("Format: ./[PROGRAM_NAME] [STR] [TO_FIND]\n");
+		return (1);
 	}
 	return (0);
 }

@@ -1,40 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 14:39:21 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 02:23:57 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/19 20:30:10 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/19 21:13:57 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (*src)
+	while (dest[i])
+		i++;
+	while (*src && nb > 0)
+	{
 		dest[i++] = *src++;
+		nb--;
+	}
 	dest[i] = '\0';
 	return (dest);
 }
 /*
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int	main(int ac, char **av)
 {
-	char	*dest;
-
-	if (ac == 2)
+	if (ac == 4)
 	{
-		printf("src: %s\n", av[1]);
-		dest = (char *)malloc(sizeof(av[1]));
-		printf("dest_bfr: %s\n", dest);
-		printf("ft_strcpy: %s\n", ft_strcpy(dest, av[1]));
-		printf("dest_aft: %s\n", dest);
+		int	n = atoi(av[3]);
+		char *dest = (char *)malloc(strlen(av[1]) + n + 1);
+		int i = 0;
+		strcpy(dest, av[1]);
+		printf("dest: \"%s\"\n", dest);
+		printf("src: \"%s\"\n", av[2]);
+		printf("n: %d\n", n);
+		printf("strncat: \"%s\"\n", ft_strncat(dest, av[2], n));
+		free (dest);
+	}
+	else
+	{
+		printf("Invalid args\n");
+		printf("Format: ./[PROGRAM_NAME] [DEST] [SRC] [N]\n");
+		return (1);
 	}
 	return (0);
 }

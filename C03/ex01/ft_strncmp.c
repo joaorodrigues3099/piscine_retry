@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 14:39:21 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 02:23:57 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/19 12:49:41 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/19 15:11:16 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
-
-	i = 0;
-	while (*src)
-		dest[i++] = *src++;
-	dest[i] = '\0';
-	return (dest);
+	if (n == 0)
+		return (0);
+	while (*s1 && *s2 && (*s1 == *s2) && n > 1)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return (*s1 - *s2);
 }
 /*
 #include <stdio.h>
@@ -26,15 +28,18 @@ char	*ft_strcpy(char *dest, char *src)
 
 int	main(int ac, char **av)
 {
-	char	*dest;
-
-	if (ac == 2)
+	if (ac == 4)
 	{
-		printf("src: %s\n", av[1]);
-		dest = (char *)malloc(sizeof(av[1]));
-		printf("dest_bfr: %s\n", dest);
-		printf("ft_strcpy: %s\n", ft_strcpy(dest, av[1]));
-		printf("dest_aft: %s\n", dest);
+		printf("s1: \"%s\"\n", av[1]);
+		printf("s2: \"%s\"\n", av[2]);
+		printf("n: %s\n", av[3]);
+		printf("strncmp: %d\n", ft_strncmp(av[1], av[2], atoi(av[3])));
+	}
+	else
+	{
+		printf("Invalid arguments\n");
+		printf("Format: ./[PROGRAM_NAME] [S1] [S2] [N]\n");
+		return (1);
 	}
 	return (0);
 }

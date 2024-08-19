@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:24:01 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 02:15:20 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:11:04 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_print_addr(unsigned char *addr)
 {
 	unsigned long	l;
-	char buf[17];
-	int	i;
-	
+	char			buf[17];
+	int				i;
+
 	l = (unsigned long)addr;
 	buf[16] = '\0';
 	i = 15;
@@ -35,9 +35,9 @@ void	ft_print_addr(unsigned char *addr)
 void	ft_print_hex(unsigned char *addr, int rem)
 {
 	char	buf[40];
-	int	i;
-	int	j;
-	
+	int		i;
+	int		j;
+
 	i = 0;
 	while (i < 40)
 		buf[i++] = ' ';
@@ -61,7 +61,7 @@ void	ft_print_str(unsigned char *addr, int rem)
 	i = 0;
 	while (i < 16 && i < rem)
 	{
-		if (addr[i] >= 32  && addr[i] <= 126)
+		if (addr[i] >= 32 && addr[i] <= 126)
 			write(1, addr + i, 1);
 		else
 			write(1, ".", 1);
@@ -87,9 +87,13 @@ void	*ft_print_memory(void *addr, unsigned int size)
 
 int	main(void)
 {
-	char *str = "Bonjour les aminches\t\n\tc  est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
-	write(1, str, 91);
-	write(1, "\n", 1);
-	ft_print_memory(str, 92);
+	/*char	*str;
+
+	str = "Bonjour les aminches\t\n\tc  est fou\ttout\tce \
+	qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";*/
+	int	i = 69;
+	/*write(1, str, 92);
+	write(1, "\n", 1);*/
+	ft_print_memory(&i, 1000);
 	return (0);
 }

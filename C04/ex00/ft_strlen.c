@@ -1,50 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn_retry.c                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 10:25:10 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/14 10:51:29 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/19 21:58:42 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/19 22:24:21 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_combn_recurive(int n, char nxt, char *buf, int pos)
+int	ft_strlen(char *str)
 {
-	char	i;
+	int	i;
 
-	if (pos == n)
-	{
-		write(1, buf, n);
-		if (buf[0] < '9' + 1 - n)
-			write(1, ", ", 2);
-		return ;
-	}
-	i = nxt;
-	while (i <= '9' + 1 - n + pos)
-	{
-		buf[pos] = i;
-		ft_combn_recurive(n, i + 1, buf, pos + 1);
+	i = 0;
+	while (str[i])
 		i++;
-	}
+	return (i);
 }
-
-void	ft_print_combn(int n)
-{
-	char	buf[10];
-
-	if (n > 0 && n < 10)
-		ft_combn_recurive(n, '0', buf, 0);
-}
-
-#include <stdlib.h>
+/*
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
 	if (ac == 2)
-		ft_print_combn(atoi(av[1]));
+	{
+		printf("str: \"%s\"\n", av[1]);
+		printf("strlen: %d\n", ft_strlen(av[1]));
+	}
+	else
+	{
+		printf("Invalid args\n");
+		printf("Format: ./[PROGRAM_NAME] [STR]\n");
+		return (1);
+	}
 	return (0);
 }
+*/
