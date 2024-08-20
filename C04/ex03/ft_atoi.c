@@ -1,35 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 22:25:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/20 11:55:29 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/20 11:56:18 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/20 12:20:37 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_atoi(char *str)
 {
+	int	sign;
+	int	res;
+
+	sign = 1;
+	res = 0;
 	while (*str)
-		write(1, str++, 1);
+	{
+		while (*str == ' ' || *str == '\r' || *str == '\t')
+			str++;
+		while (*str == '-' || *str == '+')
+		{
+			if (*str == '-')
+				sign *= -1;
+			str++;
+		}
+		while (*str >= '0' && *str <= '9')
+		{
+			res *= 10;
+			res += (*str - '0');
+			str++;
+		}
+		str++;
+	}
+	return (res);
 }
 /*
+#include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 2) {
-		ft_putstr(av[1]);
-		write(1, "\n", 1);
+	if (ac == 2)
+	{
+		printf("atoi: %d\n", ft_atoi(av[1]));
 	}
 	else {
 		char *str = "Invalid args\n";
 		write(2, str, strlen(str));
-		str = "Format: ./[PROGRAM_NAME] [STR]\n";
+		str = "Format: ./[PROGRAM] [NB]\n";
 		write(2, str, strlen(str));
 		return (1);
 	}
