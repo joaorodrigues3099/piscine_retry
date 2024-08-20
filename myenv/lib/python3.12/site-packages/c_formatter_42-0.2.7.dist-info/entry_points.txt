@@ -1,2 +1,0 @@
-[console_scripts]
-c_formatter_42 = c_formatter_42.__main__:main
