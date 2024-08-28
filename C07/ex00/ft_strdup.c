@@ -1,48 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:17:46 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/21 13:31:49 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/27 18:56:09 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/27 19:12:02 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *src, char *to_find)
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!to_find[i])
-		return (src);
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *src)
+{
+	char *dest;
+	int	i;
+
+	dest = (char *)malloc(ft_strlen(src) + 1);
+	if (!dest)
+		return (0);
+	i = 0;
 	while (*src)
-	{
-		i = 0;
-		while (src[i] && to_find[i] && src[i] == to_find[i])
-			i++;
-		if (!to_find[i])
-			return (src);
-		src++;
-	}
-	return (0);
+		dest[i++] = *src++;
+	dest[i] = '\0';
+	return (dest);
 }
 /*
 #include <stdio.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 3)
+	if (ac == 2)
 	{
-		printf("src: \"%s\"\n", av[1]);
-		printf("to_find: \"%s\"\n", av[2]);
-		printf("strstr: \"%s\"\n", ft_strstr(av[1], av[2]));
+		printf("str: \"%s\"\n", av[1]);
+		printf("dest: \"%s\"\n", ft_strdup(av[1]));
 	}
 	else
 	{
-		printf("Invalid args\n");
-		printf("Format: ./[PROGRAM_NAME] [STR] [TO_FIND]\n");
+		printf("Invalid arguments\n");
+		printf("Format: ./[PROGRAM_NAME] [STR]\n");
 		return (1);
 	}
 	return (0);

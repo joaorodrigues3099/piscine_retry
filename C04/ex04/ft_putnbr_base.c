@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:22:37 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/20 18:01:13 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/20 20:56:05 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_is_valid(char *str, int len)
 		return (0);
 	while (i < len)
 	{
-		if(str[i] == '-' || str[i] == '+' || str[i] < 33)
+		if (str[i] == '-' || str[i] == '+' || str[i] < 33)
 			return (0);
 		j = i + 1;
 		while (j < len)
@@ -36,7 +36,7 @@ int	ft_is_valid(char *str, int len)
 			if (str[i] == str[j])
 				return (0);
 			j++;
-		}	
+		}
 		i++;
 	}
 	return (1);
@@ -55,29 +55,35 @@ void	ft_putnbr_base(int nb, char *base)
 	{
 		ft_putnbr_base(-nb / len, base);
 		ft_putchar(base[nb % len]);
+		return ;
 	}
-	else if (nb < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-');
 		ft_putnbr_base(-nb, base);
-	} 
-	else if (nb > len - 1)
+		return ;
+	}
+	if (nb > len - 1)
 		ft_putnbr_base(nb / len, base);
 	ft_putchar(base[nb % len]);
 }
-
-#include <stdlib.h>
+/*
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 3) {
+	char	*str;
+
+	if (ac == 3)
+	{
 		ft_putnbr_base(atoi(av[1]), av[2]);
 		write(1, "\n", 1);
 	}
-	else {
-		char *str = "Invalid args\n";
+	else
+	{
+		str = "Invalid args\n";
 		write(2, str, strlen(str));
 		str = "Format: ./[PROGRAM] [NB] [BASE]\n";
 		write(2, str, strlen(str));
@@ -85,3 +91,4 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+*/

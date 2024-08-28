@@ -1,48 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:17:46 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/21 13:31:49 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/22 13:21:35 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/22 13:41:04 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *src, char *to_find)
+int	ft_fibonacci_recursive(int nb, int nb2, int index)
 {
-	int	i;
-
-	i = 0;
-	if (!to_find[i])
-		return (src);
-	while (*src)
+	if (index > 1)
 	{
-		i = 0;
-		while (src[i] && to_find[i] && src[i] == to_find[i])
-			i++;
-		if (!to_find[i])
-			return (src);
-		src++;
+		return(ft_fibonacci_recursive(nb2, nb2 + nb, index -1));
 	}
-	return (0);
+	return (nb2);
+}
+
+int	ft_fibonacci(int index)
+{
+	if (index < 0)
+		return (-1);
+	if (index == 0)
+		return (0);
+	return (ft_fibonacci_recursive(0, 1, index));
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 3)
+	int	index;
+
+	if (ac == 2)
 	{
-		printf("src: \"%s\"\n", av[1]);
-		printf("to_find: \"%s\"\n", av[2]);
-		printf("strstr: \"%s\"\n", ft_strstr(av[1], av[2]));
+		index = atoi(av[1]);
+		printf("nb: %d\n", index);
+		printf("ft_fibonnaci: %d\n", ft_fibonacci(index));
 	}
 	else
 	{
-		printf("Invalid args\n");
-		printf("Format: ./[PROGRAM_NAME] [STR] [TO_FIND]\n");
+		printf("Invalid args.\n");
+		printf("Format: ./[PROGRAM] [INDEX]\n");
 		return (1);
 	}
 	return (0);

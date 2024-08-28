@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debbug w/args",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["0", "10"],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build w/flags"
+        }
+    ]
+}

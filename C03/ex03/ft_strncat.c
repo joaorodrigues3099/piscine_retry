@@ -6,10 +6,9 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 20:30:10 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 21:13:57 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:34:56 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {

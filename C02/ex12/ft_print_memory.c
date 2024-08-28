@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:24:01 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 13:11:04 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:34:34 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,17 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	}
 	return (addr);
 }
-
+/*
 int	main(void)
 {
-	/*char	*str;
+	char	*str;
 
 	str = "Bonjour les aminches\t\n\tc  est fou\ttout\tce \
-	qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";*/
+	qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
 	int	i = 69;
-	/*write(1, str, 92);
-	write(1, "\n", 1);*/
+	write(1, str, 92);
+	write(1, "\n", 1);
 	ft_print_memory(&i, 1000);
 	return (0);
 }
+*/

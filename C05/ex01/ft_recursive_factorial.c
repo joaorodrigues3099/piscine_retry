@@ -1,48 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:17:46 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/21 13:31:49 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/21 13:48:03 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/22 13:20:31 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *src, char *to_find)
+int	ft_recursive_factorial_recursive(int factorial, int nb)
 {
-	int	i;
-
-	i = 0;
-	if (!to_find[i])
-		return (src);
-	while (*src)
+	if (nb > 0)
 	{
-		i = 0;
-		while (src[i] && to_find[i] && src[i] == to_find[i])
-			i++;
-		if (!to_find[i])
-			return (src);
-		src++;
+		factorial *= nb--;
+		return (ft_recursive_factorial_recursive(factorial, nb));
 	}
-	return (0);
+	return (factorial);
+}
+
+int	ft_recursive_factorial(int nb)
+{
+	if (nb < 0)
+		return (0);
+	else
+		return (ft_recursive_factorial_recursive(1, nb));
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 3)
+	int	nb;
+
+	if (ac == 2)
 	{
-		printf("src: \"%s\"\n", av[1]);
-		printf("to_find: \"%s\"\n", av[2]);
-		printf("strstr: \"%s\"\n", ft_strstr(av[1], av[2]));
+		nb = atoi(av[1]);
+		printf("nb: %d\n", nb);
+		printf("fact: %d\n", ft_recursive_factorial(nb));
 	}
 	else
 	{
-		printf("Invalid args\n");
-		printf("Format: ./[PROGRAM_NAME] [STR] [TO_FIND]\n");
+		printf("Invalid args.\n");
+		printf("Format: ./[PROGRAM] [NB]\n");
 		return (1);
 	}
 	return (0);

@@ -6,13 +6,13 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:28:51 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/20 12:20:23 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:29:51 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
@@ -54,3 +54,4 @@ int	main(int ac, char **av)
 		write(1, str, strlen(str));
 	}
 }
+*/

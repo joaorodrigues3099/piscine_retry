@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn_retry.c                             :+:      :+:    :+:   */
+/*   ft_print_combn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 10:25:10 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/14 10:51:29 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:33:20 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_print_combn(int n)
 	if (n > 0 && n < 10)
 		ft_combn_recurive(n, '0', buf, 0);
 }
-
+/*
 #include <stdlib.h>
 
 int	main(int ac, char **av)
@@ -48,3 +48,4 @@ int	main(int ac, char **av)
 		ft_print_combn(atoi(av[1]));
 	return (0);
 }
+*/

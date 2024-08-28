@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:12:26 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/19 20:25:50 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:30:28 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	d_len;
 	unsigned int	s_len;
-	int	rem;
+	int				rem;
 
 	d_len = ft_strlen(dest);
 	s_len = ft_strlen(src);
 	if (size <= d_len)
-		return(size + s_len);
+		return (size + s_len);
 	dest += d_len;
 	rem = size - d_len - 1;
 	while (*src && rem > 0)
@@ -46,9 +46,11 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 
 int	main(int ac, char **av)
 {
+	char	*dest;
+
 	if (ac == 4)
 	{
-		char *dest = (char *)malloc(atoi(av[3] + 1));
+		dest = (char *)malloc(atoi(av[3] + 1));
 		dest = av[1];
 		printf("dest_bfr: \"%s\"\n", dest);
 		printf("src: \"%s\"\n", av[2]);
@@ -60,7 +62,7 @@ int	main(int ac, char **av)
 	{
 		printf("Invalid args.\n");
 		printf("Format: ./[PROGRAM_NAME] [DEST] [SRC] [N]\n");
-		return (1);	
+		return (1);
 	}
 	return (0);
 }

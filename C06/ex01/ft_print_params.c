@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 12:35:08 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/21 13:32:18 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/27 14:52:18 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/27 15:05:32 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include <unistd.h>
+
+void	ft_putchar(char c)
 {
-	while (*s1 && *s2 && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+	write(1, &c, 1);
 }
-/*
-#include <stdio.h>
+
+void	ft_putstr(char *str)
+{
+	while (*str)
+		ft_putchar(*str++);
+}
 
 int	main(int ac, char **av)
 {
-	if (ac == 3)
+	int	i;
+
+	i = 1;
+	while (i < ac)
 	{
-		printf("s1: \"%s\"\n", av[1]);
-		printf("s2: \"%s\"\n", av[2]);
-		printf("strcmp: %d\n", ft_strcmp(av[1], av[2]));
+		ft_putstr(av[i++]);
+		ft_putchar('\n');
 	}
-	else
-	{
-		printf("Invalid arguments\n");
-		printf("Format: ./[PROGRAM_NAME] [S1] [S2]\n");
-	}
+	return (0);
 }
-*/

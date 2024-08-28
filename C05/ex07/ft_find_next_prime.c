@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:17:46 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/21 13:31:49 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/23 18:31:27 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/27 12:49:19 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *src, char *to_find)
+int	ft_find_next_prime(int nb)
 {
 	int	i;
 
-	i = 0;
-	if (!to_find[i])
-		return (src);
-	while (*src)
+	i = 2;
+	if (nb < 2)
+		return (ft_find_next_prime(nb + 1));
+	if (nb % 2 == 0 && 2 > nb)
+		return (ft_find_next_prime(nb + 1));
+	while (i * i <= nb)
 	{
-		i = 0;
-		while (src[i] && to_find[i] && src[i] == to_find[i])
-			i++;
-		if (!to_find[i])
-			return (src);
-		src++;
+		if (nb % i++ == 0)
+			return (ft_find_next_prime(nb + 1));
 	}
-	return (0);
+	return (nb);
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
-	if (ac == 3)
+	int	i;
+
+	if (ac == 2)
 	{
-		printf("src: \"%s\"\n", av[1]);
-		printf("to_find: \"%s\"\n", av[2]);
-		printf("strstr: \"%s\"\n", ft_strstr(av[1], av[2]));
+		i = atoi(av[1]);
+		printf("nb: %d\n", i);
+		printf("ft_find_next__prime: %d\n", ft_find_next_prime(i));
 	}
 	else
 	{
-		printf("Invalid args\n");
-		printf("Format: ./[PROGRAM_NAME] [STR] [TO_FIND]\n");
+		printf("Invalid args.\n");
+		printf("Format: ./[PROGRAM] [NB]\n");
 		return (1);
 	}
 	return (0);

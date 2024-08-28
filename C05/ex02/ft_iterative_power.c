@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:17:46 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/21 13:31:49 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/21 14:11:16 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/22 13:20:27 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *src, char *to_find)
+int	ft_iterative_power(int nb, int power)
 {
-	int	i;
+	int	res;
 
-	i = 0;
-	if (!to_find[i])
-		return (src);
-	while (*src)
+	res = nb;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	while (power-- > 1)
 	{
-		i = 0;
-		while (src[i] && to_find[i] && src[i] == to_find[i])
-			i++;
-		if (!to_find[i])
-			return (src);
-		src++;
+		res *= nb;
 	}
-	return (0);
+	return (res);
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
 	if (ac == 3)
 	{
-		printf("src: \"%s\"\n", av[1]);
-		printf("to_find: \"%s\"\n", av[2]);
-		printf("strstr: \"%s\"\n", ft_strstr(av[1], av[2]));
+		int nb = atoi(av[1]);
+		printf("nb: %d\n", nb);
+		int power = atoi(av[2]);
+		printf("power: %d\n", power);
+		printf("iterative_power: %d\n", ft_iterative_power(nb, power));
 	}
 	else
 	{
-		printf("Invalid args\n");
-		printf("Format: ./[PROGRAM_NAME] [STR] [TO_FIND]\n");
+		printf("Invalid args.\n");
+		printf("Format: ./[PROGRAM] [NB] [POWER]\n");
 		return (1);
 	}
 	return (0);
