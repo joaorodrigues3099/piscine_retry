@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:23:35 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/22 17:10:56 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/29 00:27:14 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
 	int	sqrt;
-	
+
 	sqrt = 1;
 	if (nb > 0)
 	{

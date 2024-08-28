@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_convert_base_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 18:56:09 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/29 00:06:20 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/28 23:57:59 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/29 00:00:02 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
@@ -22,36 +20,52 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *src)
+int	ft_base_index(char c, char *base)
 {
-	char	*dest;
-	int		i;
+	int	i;
 
-	dest = (char *)malloc(ft_strlen(src) + 1);
-	if (!dest)
-		return (0);
 	i = 0;
-	while (*src)
-		dest[i++] = *src++;
-	dest[i] = '\0';
-	return (dest);
-}
-/*
-#include <stdio.h>
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
+	while (base[i])
 	{
-		printf("str: \"%s\"\n", av[1]);
-		printf("dest: \"%s\"\n", ft_strdup(av[1]));
+		if (c == base[i])
+			return (i);
+		i++;
 	}
-	else
+	return (-1);
+}
+
+int	ft_valid_base(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = i + 1;
+	while (base[i])
 	{
-		printf("Invalid arguments\n");
-		printf("Format: ./[PROGRAM_NAME] [STR]\n");
-		return (1);
+		if (base[i] == '-' || base[i] == '+')
+			return (0);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	if (i < 2)
+		return (0);
+	return (1);
+}
+
+int	ft_valid_nbr(char *nbr, char *base_from)
+{
+	while (*nbr)
+	{
+		if (ft_base_index(*nbr, base_from) != -1)
+			return (1);
+		nbr++;
 	}
 	return (0);
 }
-*/

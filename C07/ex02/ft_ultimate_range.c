@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 20:09:15 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/27 21:57:34 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/08/29 00:06:12 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
-	int *buf;
+	int	*buf;
 
 	if (min >= max)
 	{
@@ -34,25 +34,30 @@ int	ft_ultimate_range(int **range, int min, int max)
 
 int	main(int ac, char **av)
 {
+	int	min;
+	int	max;
+	int	*buf;
+	int	i;
+	int	range;
+
 	if (ac != 3)
 	{
 		printf("Invalid arguments\n");
 		printf("Format: ./[PROGRAM_NAME] [MIN] [MAX]\n");
 		return (1);
 	}
-	int min = atoi(av[1]);
-	int max = atoi(av[2]);
+	min = atoi(av[1]);
+	max = atoi(av[2]);
 	if (min >= max)
 	{
 		printf("Min need to be smaller than Max.\n");
 		return (1);
 	}
-	int *buf;
 	printf("min: %d\n", min);
 	printf("max: %d\n", max);
 	printf("ft_ultimate_range: %d\n", ft_ultimate_range(&buf, min, max));
-	int i = 0;
-	int range = max - min;
+	i = 0;
+	range = max - min;
 	printf("range: {");
 	while (i < range)
 	{
