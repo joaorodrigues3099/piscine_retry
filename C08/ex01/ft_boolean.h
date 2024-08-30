@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 20:54:23 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/08/30 21:12:38 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/08/30 21:03:05 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/08/30 22:05:21 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-void	ft_putchar(char c);
-void	ft_swap(int *a, int *b);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_strcmp(char *s1, char *s2);
+# include <stdbool.h>
+# include <unistd.h>
+
+typedef bool	t_bool;
+
+bool	is_even(int nbr)
+{
+	return (nbr % 2 == 0);
+}
+
+# define EVEN is_even
+# define TRUE true
+# define FALSE false
+# define EVEN_MSG "I have an even number of arguments."
+# define ODD_MSG "I have an odd number of arguments."
+# define SUCCESS 0
 
 #endif
