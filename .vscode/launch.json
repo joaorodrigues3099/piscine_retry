@@ -1,14 +1,16 @@
 {
     "version": "0.2.0",
     "configurations": [
+		
         {
-            "name": "Debbug w/args",
+            "name": "debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["123456789123456789123456789", "0123456789", "0123456789ABCDEF"],
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Build w/flags"
+			"program": "/home/joaopedrorodrigues/Piscine42/C08/tester/ft_show_tab",
+            //"program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["Hello", "World"],
+            "cwd": "/home/joaopedrorodrigues/Piscine42/C08/tester",
+            "preLaunchTask": "make"
         }
-    ]
+	]
 }
