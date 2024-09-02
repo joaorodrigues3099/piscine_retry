@@ -1,0 +1,1 @@
+../tester/ft_stock_str.h
