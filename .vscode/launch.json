@@ -6,10 +6,9 @@
             "name": "debug",
             "type": "cppdbg",
             "request": "launch",
-			"program": "/home/joaopedrorodrigues/Piscine42/C08/tester/ft_show_tab",
-            //"program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["Hello", "World"],
-            "cwd": "/home/joaopedrorodrigues/Piscine42/C08/tester",
+            "program": "${fileDirname}/../${fileBasenameNoExtension}",
+            "args": ["-c", "20000", "C10/test_files/1500bytes"],
+            "cwd": "${workspaceFolder}",
             "preLaunchTask": "make"
         }
 	]

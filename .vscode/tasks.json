@@ -33,7 +33,7 @@
                 "-j"
             ],
 			"options": {
-                "cwd": "/home/joaopedrorodrigues/Piscine42/C08/tester"
+                "cwd": "${fileDirname}/.."
             },
             "group": {
                 "kind": "build",
