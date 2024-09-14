@@ -1,51 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 14:33:55 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/12 14:57:23 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/09/12 15:26:42 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/09/12 15:48:47 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
 	t_list	*current;
-	t_list	*next;
 
 	current = begin_list;
 	while (current)
 	{
-		next = current->next;
-		free_fct(current->data);
-		free(current);
-		current = next;
+		(*f)(current->data);
+		current = current->next;
 	}
 }
 /*
 #include <stdio.h>
-#include <string.h>
-
-void	ft_free_ft(void *ptr)
-{
-	free(ptr);
-}
+#include <stdlib.h>
 
 t_list	*ft_create_elem(void *data)
 {
-	t_list	*element;
+	t_list	*new_elem;
 
-	element = (t_list *)malloc(sizeof(t_list));
-	if (!element)
+	new_elem = (t_list *)malloc(sizeof(t_list));
+	if (!new_elem)
 		return (NULL);
-	element->data = data;
-	element->next = NULL;
-	return (element);
+	new_elem->data = data;
+	new_elem->next = NULL;
+	return (new_elem);
 }
 
 t_list	*ft_list_push_strs(int size, char **strs)
@@ -53,16 +44,12 @@ t_list	*ft_list_push_strs(int size, char **strs)
 	t_list	*head;
 	t_list	*new_elem;
 	int		i;
-	char	*data_copy;
 
 	head = 0;
 	i = 0;
 	while (i < size)
 	{
-		data_copy = strdup(strs[i]);
-		if (!data_copy)
-			return (NULL);
-		new_elem = ft_create_elem(data_copy);
+		new_elem = ft_create_elem(strs[i]);
 		if (!new_elem)
 			return (0);
 		new_elem->next = head;
@@ -72,30 +59,18 @@ t_list	*ft_list_push_strs(int size, char **strs)
 	return (head);
 }
 
-void	ft_print_node(t_list *header)
+void	ft_print_list_data(void *data)
 {
-	t_list	*current;
-
-	current = header;
-	while (current)
-	{
-		printf("%s -> ", (char *)current->data);
-		current = current->next;
-	}
-	printf("NULL\n");
+	printf("%s -> ", (char *)data);
 }
 
 int	main(int ac, char **av)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = ft_list_push_strs(ac - 1, av + 1);
-	printf("List bfr:\n");
-	ft_print_node(head);
-	ft_list_clear(head, &ft_free_ft);
-	head = NULL;
-	printf("List aft:\n");
-	ft_print_node(head);
+	ft_list_foreach(head, &ft_print_list_data);
+	printf("NULL\n");
 	return (0);
 }
 */

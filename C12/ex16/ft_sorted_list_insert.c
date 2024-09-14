@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_at.c                                       :+:      :+:    :+:   */
+/*   ft_sorted_list_insert.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 21:23:22 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/12 14:56:57 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/09/14 13:17:13 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/09/14 14:13:02 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
+void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
 {
-	unsigned int	i;
-	t_list			*current;
+	t_list	*previous;
+	t_list	*current;
+	t_list	*new_elem;
 
-	i = 0;
-	current = begin_list;
-	while (current)
+	if (!begin_list)
+		return ;
+	new_elem = ft_create_elem(data);
+	if (!new_elem)
+		return ;
+	if (!*begin_list || cmp((*begin_list)->data, new_elem->data) >= 0)
 	{
-		if (i == nbr)
-			return (current);
-		current = current->next;
-		i++;
+		new_elem->next = *begin_list;
+		*begin_list = new_elem;
+		return ;
 	}
-	return (current);
+	previous = 0;
+	current = *begin_list;
+	while (current && cmp(current->data, new_elem->data) < 0)
+	{
+		previous = current;
+		current = current->next;
+	}
+	previous->next = new_elem;
+	new_elem->next = current;
 }
 /*
 #include <stdio.h>
 #include <stdlib.h>
-
-t_list	*ft_create_elem(void *data)
-{
-	t_list	*element;
-
-	element = (t_list *)malloc(sizeof(t_list));
-	if (!element)
-		return (NULL);
-	element->data = data;
-	element->next = NULL;
-	return (element);
-}
 
 t_list	*ft_list_push_strs(int size, char **strs)
 {
@@ -64,12 +63,23 @@ t_list	*ft_list_push_strs(int size, char **strs)
 	return (head);
 }
 
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			break ;
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
+
 void	ft_print_list(t_list *head)
 {
 	t_list	*current;
 
 	current = head;
-	printf("list: ");
 	while (current)
 	{
 		printf("%s -> ", (char *)current->data);
@@ -83,9 +93,12 @@ int	main(int ac, char **av)
 	t_list	*head;
 
 	head = ft_list_push_strs(ac - 2, av + 2);
+	printf("list_bfr: ");
 	ft_print_list(head);
-	printf("ft_list_at(%d): %s\n", atoi(av[1]), (char *)ft_list_at(head,
-			atoi(av[1]))->data);
+	printf("new_element->data: %s\n", av[1]);
+	ft_sorted_list_insert(&head, av[1], &ft_strcmp);
+	printf("list_aft: ");
+	ft_print_list(head);
 	return (0);
 }
 */

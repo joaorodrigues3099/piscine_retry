@@ -2,6 +2,7 @@
 	"C_Cpp.errorSquiggles": "disabled",
 	"files.associations": {
 		"header.h": "c",
-		"ft_list.h": "c"
+		"ft_list.h": "c",
+		"stdlib.h": "c"
 	}
 }

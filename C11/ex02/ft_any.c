@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:06:28 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/07 17:27:45 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:59:42 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_any(char **tab, int(*f)(char*))
+int	ft_any(char **tab, int (*f)(char*))
 {
 	int	i;
-	
+
 	i = 0;
 	while (tab[i])
 	{

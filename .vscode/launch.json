@@ -6,10 +6,10 @@
             "name": "debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/../${fileBasenameNoExtension}",
-            "args": ["-c", "20000", "C10/test_files/1500bytes"],
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["hello", "hello", "world"],
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "make"
+            "preLaunchTask": "build"
         }
 	]
 }

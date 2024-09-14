@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 19:19:06 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/02 23:11:07 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:59:05 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	**ft_split(char *str, char *charset)
 	split = (char **)malloc(sizeof(char *) * (n_words + 1));
 	if (!split)
 		return (NULL);
-	ft_fill_split(split, str, charset);	
+	ft_fill_split(split, str, charset);
 	i = 0;
 	while (i < n_words)
 	{

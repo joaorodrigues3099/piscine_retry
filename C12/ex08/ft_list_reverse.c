@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 14:33:55 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/12 14:57:23 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/09/12 15:14:36 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/09/14 15:29:07 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+void	ft_list_reverse(t_list **begin_list)
 {
+	t_list	*prev;
 	t_list	*current;
 	t_list	*next;
 
-	current = begin_list;
+	prev = 0;
+	current = *begin_list;
+	next = 0;
 	while (current)
 	{
 		next = current->next;
-		free_fct(current->data);
-		free(current);
+		current->next = prev;
+		prev = current;
 		current = next;
 	}
+	*begin_list = prev;
 }
 /*
 #include <stdio.h>
-#include <string.h>
-
-void	ft_free_ft(void *ptr)
-{
-	free(ptr);
-}
+#include <stdlib.h>
 
 t_list	*ft_create_elem(void *data)
 {
@@ -53,16 +51,12 @@ t_list	*ft_list_push_strs(int size, char **strs)
 	t_list	*head;
 	t_list	*new_elem;
 	int		i;
-	char	*data_copy;
 
 	head = 0;
 	i = 0;
 	while (i < size)
 	{
-		data_copy = strdup(strs[i]);
-		if (!data_copy)
-			return (NULL);
-		new_elem = ft_create_elem(data_copy);
+		new_elem = ft_create_elem(strs[i]);
 		if (!new_elem)
 			return (0);
 		new_elem->next = head;
@@ -72,11 +66,11 @@ t_list	*ft_list_push_strs(int size, char **strs)
 	return (head);
 }
 
-void	ft_print_node(t_list *header)
+void	ft_print_list(t_list *head)
 {
 	t_list	*current;
 
-	current = header;
+	current = head;
 	while (current)
 	{
 		printf("%s -> ", (char *)current->data);
@@ -87,15 +81,14 @@ void	ft_print_node(t_list *header)
 
 int	main(int ac, char **av)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = ft_list_push_strs(ac - 1, av + 1);
-	printf("List bfr:\n");
-	ft_print_node(head);
-	ft_list_clear(head, &ft_free_ft);
-	head = NULL;
-	printf("List aft:\n");
-	ft_print_node(head);
+	printf("list:\n");
+	ft_print_list(head);
+	ft_list_reverse(&head);
+	printf("list_reverse:\n");
+	ft_print_list(head);
 	return (0);
 }
 */

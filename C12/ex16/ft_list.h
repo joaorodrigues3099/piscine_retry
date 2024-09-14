@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 22:41:15 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/12 14:58:32 by joao-alm         ###   ########.fr       */
+/*   Created: 2024/09/09 21:01:02 by joao-alm          #+#    #+#             */
+/*   Updated: 2024/09/14 13:20:11 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-typedef struct s_stock_str
+typedef struct s_list
 {
-	int				size;
-	char			*str;
-	char			*copy;
-}					t_stock_str;
+	struct s_list	*next;
+	void			*data;
+}					t_list;
 
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
-void				ft_show_tab(struct s_stock_str *par);
+t_list	*ft_create_elem(void *data);
 
 #endif

@@ -6,20 +6,20 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:33:10 by joao-alm          #+#    #+#             */
-/*   Updated: 2024/09/09 20:42:30 by joao-alm         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:57:36 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_swap(char **s1, char **s2)
 {
-	char *swap;
-	
+	char	*swap;
+
 	swap = *s1;
 	*s1 = *s2;
 	*s2 = swap;
 }
 
-void	ft_advanced_sort_string_tab(char **tab, int(*cmp)(char *, char *))
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	int	i;
 	int	j;
