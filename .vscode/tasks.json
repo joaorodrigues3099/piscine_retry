@@ -33,7 +33,7 @@
                 "-j"
             ],
 			"options": {
-                "cwd": "${fileDirname}/.."
+                "cwd": "${fileDirname}"
             },
             "group": {
                 "kind": "build",
